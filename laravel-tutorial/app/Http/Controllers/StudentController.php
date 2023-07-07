@@ -38,9 +38,9 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'student_name'          =>  'required',
-            'student_email'         =>  'required|email|unique:students',
-            'student_image'         =>  'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000'
+            'student_name'=>'required',
+            'student_email'=>'required|email|unique:students',
+            'student_image'=>'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000'
         ]);
 
         $file_name = time() . '.' . request()->student_image->getClientOriginalExtension();
@@ -77,6 +77,7 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Student $student)
+    
     {
         return view('edit', compact('student'));
     }
